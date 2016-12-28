@@ -4,6 +4,7 @@
 //
 //  Created by wei on 2016/12/27.
 //  Copyright © 2016年 wei. All rights reserved.
+//  blog's address http://southpeak.github.io/2014/10/30/objective-c-runtime-2/
 //
 
 #import "AddProperty_Ivar_MethodDynamicVC.h"
@@ -87,15 +88,17 @@ void TestMetaClass(id self, SEL _cmd){
     objc_registerClassPair(newClass);
     
     id instance = [[newClass alloc] init];
-    [instance performSelector:@selector(testMetaClass)];
+    if ([instance respondsToSelector:@selector(testMetaClass)]) {
+        [instance performSelector:@selector(testMetaClass)];
+    }
     
     Ivar ivar = class_getInstanceVariable(newClass, "_ivar2");
     object_setIvar(instance, ivar, @"ivar2Valuesss");
     id ivar2Value = [self getIvarValueWithTarget:instance withPropertyName:@"_ivar2"];
     NSLog(@"%@", ivar2Value);
     
-    [instance performSelector:@selector(setProperty2:) withObject:@"property2Value"];
-    NSLog(@"property2's value: %@", [instance performSelector:@selector(property2)]);
+//    [instance performSelector:@selector(setProperty2:) withObject:@"property2Value"];
+//    NSLog(@"property2's value: %@", [instance performSelector:@selector(property2)]);
     
     
     unsigned int count = 0;

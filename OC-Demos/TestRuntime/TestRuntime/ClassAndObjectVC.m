@@ -4,6 +4,7 @@
 //
 //  Created by wei on 2016/12/26.
 //  Copyright © 2016年 wei. All rights reserved.
+//  blog's address http://southpeak.github.io/2014/10/25/objective-c-runtime-1/
 //
 
 #import "ClassAndObjectVC.h"

@@ -13,7 +13,6 @@
 @property (strong, nonatomic) NSMutableArray *titles;
 @property (strong, nonatomic) NSMutableArray *classStrs;
 
-
 @end
 
 static NSString *cellIdentity = @"cell";
@@ -29,12 +28,13 @@ static NSString *cellIdentity = @"cell";
     self.classStrs  = @[].mutableCopy;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentity];
-    self.tableView.separatorInset = UIEdgeInsetsMake(0, -20, 0, -20);
     
     
     [self addClassStr:@"ClassAndObjectVC" title:@"Class&Object Demo"];
     [self addClassStr:@"AddProperty_Ivar_MethodDynamicVC" title:@"AddProperty&Ivar&MethodDynamic Demo"];
     [self addClassStr:@"AddAssociatedOjectVC" title:@"AddAssociatedOject Demo"];
+    [self addClassStr:@"AboutMethodVC" title:@"AboutMethod&消息转发(message forwarding) Demo"];
+    [self addClassStr:@"MethodSwizzlingVC" title:@"MethodSwizzling Demo"];
     
     
 }
@@ -69,7 +69,7 @@ static NSString *cellIdentity = @"cell";
         label.textAlignment = NSTextAlignmentCenter;
         label.backgroundColor = [UIColor clearColor];
         [vc.view addSubview:label];
-        label.text = [NSString stringWithFormat:@"see code in Class %@", NSStringFromClass(class)];
+        label.text = [NSString stringWithFormat:@"see code in Class %@\n\nsee rusult in console", NSStringFromClass(class)];
         label.numberOfLines = 0;
         [label sizeToFit];
         label.center = vc.view.center;
