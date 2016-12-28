@@ -32,7 +32,10 @@ static NSString *cellIdentity = @"cell";
     self.tableView.separatorInset = UIEdgeInsetsMake(0, -20, 0, -20);
     
     
-    [self addClassStr:@"ClassAndObjectVC" title:@"Runtime Class&Object Demo"];
+    [self addClassStr:@"ClassAndObjectVC" title:@"Class&Object Demo"];
+    [self addClassStr:@"AddProperty_Ivar_MethodDynamicVC" title:@"AddProperty&Ivar&MethodDynamic Demo"];
+    [self addClassStr:@"AddAssociatedOjectVC" title:@"AddAssociatedOject Demo"];
+    
     
 }
 
@@ -61,6 +64,15 @@ static NSString *cellIdentity = @"cell";
         vc.view.backgroundColor = [UIColor whiteColor];
         [self.navigationController pushViewController:vc animated:YES];
         vc.title = self.titles[indexPath.row];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 10)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.backgroundColor = [UIColor clearColor];
+        [vc.view addSubview:label];
+        label.text = [NSString stringWithFormat:@"see code in Class %@", NSStringFromClass(class)];
+        label.numberOfLines = 0;
+        [label sizeToFit];
+        label.center = vc.view.center;
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];

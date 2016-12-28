@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		791B6D9E1E136BFA00F876E1 /* AddAssociatedOjectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B6D9D1E136BFA00F876E1 /* AddAssociatedOjectVC.m */; };
+		796E10C61E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 796E10C51E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.m */; };
 		79FF5F051E10BAC8009CC28F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF5F041E10BAC8009CC28F /* main.m */; };
 		79FF5F081E10BAC8009CC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF5F071E10BAC8009CC28F /* AppDelegate.m */; };
 		79FF5F0B1E10BAC8009CC28F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF5F0A1E10BAC8009CC28F /* ViewController.m */; };
@@ -17,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		791B6D9C1E136BFA00F876E1 /* AddAssociatedOjectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAssociatedOjectVC.h; sourceTree = "<group>"; };
+		791B6D9D1E136BFA00F876E1 /* AddAssociatedOjectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAssociatedOjectVC.m; sourceTree = "<group>"; };
+		796E10C41E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProperty_Ivar_MethodDynamicVC.h; sourceTree = "<group>"; };
+		796E10C51E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProperty_Ivar_MethodDynamicVC.m; sourceTree = "<group>"; };
 		79FF5F001E10BAC8009CC28F /* TestRuntime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestRuntime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FF5F041E10BAC8009CC28F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79FF5F061E10BAC8009CC28F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +73,10 @@
 				79FF5F0A1E10BAC8009CC28F /* ViewController.m */,
 				79FF5F1A1E10BFF3009CC28F /* ClassAndObjectVC.h */,
 				79FF5F1B1E10BFF3009CC28F /* ClassAndObjectVC.m */,
+				796E10C41E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.h */,
+				796E10C51E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.m */,
+				791B6D9C1E136BFA00F876E1 /* AddAssociatedOjectVC.h */,
+				791B6D9D1E136BFA00F876E1 /* AddAssociatedOjectVC.m */,
 				79FF5F0C1E10BAC8009CC28F /* Main.storyboard */,
 				79FF5F0F1E10BAC8009CC28F /* Assets.xcassets */,
 				79FF5F111E10BAC8009CC28F /* LaunchScreen.storyboard */,
@@ -156,7 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				796E10C61E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.m in Sources */,
 				79FF5F0B1E10BAC8009CC28F /* ViewController.m in Sources */,
+				791B6D9E1E136BFA00F876E1 /* AddAssociatedOjectVC.m in Sources */,
 				79FF5F081E10BAC8009CC28F /* AppDelegate.m in Sources */,
 				79FF5F051E10BAC8009CC28F /* main.m in Sources */,
 				79FF5F1C1E10BFF3009CC28F /* ClassAndObjectVC.m in Sources */,
@@ -318,6 +330,7 @@
 				79FF5F191E10BAC8009CC28F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

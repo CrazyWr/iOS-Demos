@@ -16,7 +16,9 @@
 
 - (void)method1;
 - (void)method2;
+- (void)method3;
 + (void)classMethod1;
++ (void)classMethod2;
 
 @end
 
@@ -34,6 +36,10 @@
     
 }
 
++ (void)classMethod2{
+    
+}
+
 - (void)method1 {
     NSLog(@"call method method1");
 }
@@ -42,26 +48,20 @@
     
 }
 
+- (void)method3 {
+    
+}
+
 - (void)method3WithArg1:(NSInteger)arg1 arg2:(NSString *)arg2 {
     NSLog(@"arg1 : %ld, arg2 : %@", arg1, arg2);
 }
 @end
 
+
+
 @interface ClassAndObjectVC ()
 
 @end
-
-void TestMetaClass(id self, SEL _cmd){
-    NSLog(@"This objcet is %p", self);
-    NSLog(@"Class is %@, super class is %@", [self class], [self superclass]);
-    Class currentClass = [self class];
-    for (int i = 0; i < 4; i++) {
-        NSLog(@"Following the isa pointer %d times gives %p", i, currentClass);
-        currentClass = objc_getClass((__bridge void *)currentClass);
-    }
-    NSLog(@"NSObject's class is %p", [NSObject class]);
-    NSLog(@"NSObject's meta class is %p", objc_getClass(class_getName([NSObject class])));
-}
 
 @implementation ClassAndObjectVC
 
@@ -69,23 +69,7 @@ void TestMetaClass(id self, SEL _cmd){
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self ex_registerClassPair];
-    
     [self testMethodsAboutRuntime];
-}
-
-
-/**
- @brief 运行时创建一个TestClass类 superClass NSError, 添加一个方法testMetaClass方法, 执行的是TestMetaClass方法的内容
- */
-- (void)ex_registerClassPair {
-    
-    Class newClass = objc_allocateClassPair([NSError class], "TestClass", 0);
-    class_addMethod(newClass, @selector(testMetaClass), (IMP)TestMetaClass, "v@:");
-    objc_registerClassPair(newClass);
-    
-    id instance = [[newClass alloc] initWithDomain:@"some domain" code:0 userInfo:nil];
-    [instance performSelector:@selector(testMetaClass)];
 }
 
 
@@ -101,22 +85,22 @@ void TestMetaClass(id self, SEL _cmd){
     
     //类名
     NSLog(@"class name: %s", class_getName(cls));
-    NSLog(@"==========================================================================");
+    NSLog(@"=================================类名=========================================");
     
     //父类
     NSLog(@"super class name: %s", class_getName(class_getSuperclass(cls)));
-    NSLog(@"==========================================================================");
+    NSLog(@"=================================父类=========================================");
     
     //是否是元类
     NSLog(@"MyClass is %@ a meta-class", (class_isMetaClass(cls)) ? @"":@"not");
-    NSLog(@"==========================================================================");
+    NSLog(@"=================================元类========================================");
     
     NSLog(@"%s's meta-class is %s", class_getName(cls), class_getName(meta_class));
-    NSLog(@"==========================================================================");
+    NSLog(@"================================实例大小==========================================");
     
     //变量实例大小
     NSLog(@"instance size: %zu", class_getInstanceSize(cls));
-    NSLog(@"==========================================================================");
+    NSLog(@"================================成员变量======================================");
     
     //成员变量
     Ivar *ivars = class_copyIvarList(cls, &outCount);
@@ -131,7 +115,7 @@ void TestMetaClass(id self, SEL _cmd){
     if (string) {
         NSLog(@"\"_string\" instance variable %s", ivar_getName(string));
     }
-    NSLog(@"==========================================================================");
+    NSLog(@"=================================属性=========================================");
     
     //属性操作
     objc_property_t *properties = class_copyPropertyList(cls, &outCount);
@@ -140,39 +124,56 @@ void TestMetaClass(id self, SEL _cmd){
         NSLog(@"propert's name is: %s at index %d", property_getName(property), i);
     }
     free(properties);//手动释放
-    NSLog(@"==========================================================================");
+    NSLog(@"===============================属性by名字======================================");
     
     objc_property_t array = class_getProperty(cls, "array");
     if (array) {
-        NSLog(@"\array\" property %s, attrubutes:%s", property_getName(array), property_getAttributes(array));
+        NSLog(@"\"array\" property name: %s, attrubutes:%s", property_getName(array), property_getAttributes(array));
     }
-    NSLog(@"==========================================================================");
+    NSLog(@"================================实例方法========================================");
     
     //方法操作
     Method *methods = class_copyMethodList(cls, &outCount);
     for (int i = 0; i < outCount; i++) {
         Method method = methods[i];
-        NSLog(@"method's name: %s at index:%d", method_getName(method), i);
+        NSLog(@"method's name: %s at index:%d", sel_getName(method_getName(method)), i);
     }
     free(methods);
     
+    NSLog(@"=================================类方法========================================");
+    Method *classMethods = class_copyMethodList(meta_class, &outCount);
+    for (int i = 0; i < outCount; i++) {
+        Method method = classMethods[i];
+        NSLog(@"classMethod's name: %s at index:%d", sel_getName(method_getName(method)), i);
+    }
+    free(classMethods);
+    
+    Method classMethod1 = class_getClassMethod(cls, @selector(classMethod1));
+    if (classMethod1) {
+        NSLog(@"class method: %s", sel_getName(method_getName(classMethod1)));
+    }
+    
+    NSLog(@"MyClass is %@ responsed to selector: method3WithArg1: arg2:", class_respondsToSelector(cls, @selector(method3WithArg1:arg2:)) ? @"":@"not");
+    
+    IMP imp = class_getMethodImplementation(cls, @selector(method3WithArg1:arg2:));
+    imp();
+    NSLog(@"==================================协议======================================");
+    
+    //协议
+    Protocol * __unsafe_unretained *protocols = class_copyProtocolList(cls, &outCount);
+    Protocol *protocol;
+    for (int i = 0; i < outCount; i++) {
+        protocol = protocols[i];
+        NSLog(@"protocol name: %s", protocol_getName(protocol));
+    }
+    
+    NSLog(@"MyCLass is %@ reponsed to protocol %s", class_conformsToProtocol(cls, protocol) ? @"":@"not", protocol_getName(protocol));
+    NSLog(@"==========================================================================");
     
     
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
