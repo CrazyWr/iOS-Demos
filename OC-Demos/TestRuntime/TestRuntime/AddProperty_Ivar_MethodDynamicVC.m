@@ -92,8 +92,11 @@ void TestMetaClass(id self, SEL _cmd){
         [instance performSelector:@selector(testMetaClass)];
     }
     
-    Ivar ivar = class_getInstanceVariable(newClass, "_ivar2");
-    object_setIvar(instance, ivar, @"ivar2Valuesss");
+    Ivar ivar = class_getInstanceVariable(newClass,
+                                          "_ivar2");
+    object_setIvar(instance,
+                   ivar,
+                   @"ivar2Valuesss");
     id ivar2Value = [self getIvarValueWithTarget:instance withPropertyName:@"_ivar2"];
     NSLog(@"%@", ivar2Value);
     
@@ -102,7 +105,8 @@ void TestMetaClass(id self, SEL _cmd){
     
     
     unsigned int count = 0;
-    objc_property_t *properties = class_copyPropertyList(newClass, &count);
+    objc_property_t *properties = class_copyPropertyList(newClass,
+                                                         &count);
     for (int i = 0; i<count; i++) {
         objc_property_t property = properties[i];
         NSLog(@"property's name:%s", property_getName(property));
@@ -122,7 +126,11 @@ void TestMetaClass(id self, SEL _cmd){
 - (void)addIvarWithtarget:(Class)target withPropertyName:(NSString *)propertyName withValue:(id)value {
     
     const char * type = @encode(typeof(value));
-    BOOL add = class_addIvar(target, [propertyName UTF8String], sizeof(typeof(value)), log2(sizeof(typeof(value))), type);
+    BOOL add = class_addIvar(target,
+                             [propertyName UTF8String],
+                             sizeof(typeof(value)),
+                             log2(sizeof(typeof(value))),
+                             type);
     
     if (add) {
         NSLog(@"创建实例Ivar成功");
@@ -141,7 +149,8 @@ void TestMetaClass(id self, SEL _cmd){
  @return return value description
  */
 - (id)getIvarValueWithTarget:(id)target withPropertyName:(NSString *)propertyName {
-    Ivar ivar = class_getInstanceVariable([target class], [propertyName UTF8String]);
+    Ivar ivar = class_getInstanceVariable([target class],
+                                          [propertyName UTF8String]);
     if (ivar) {
 //        NSString *name = [NSString stringWithUTF8String:ivar_getName(ivar)];
         id value = object_getIvar(target, ivar);
@@ -159,7 +168,11 @@ void TestMetaClass(id self, SEL _cmd){
     objc_property_attribute_t ownership = {"C", ""};//C -> Copy
     objc_property_attribute_t backingivar = {"V", "_ivar1"};
     objc_property_attribute_t attrs[] = {type, ownership, backingivar};
-    BOOL add = class_addProperty(cls, [propertyName UTF8String], attrs, 3);
+    
+    BOOL add = class_addProperty(cls,
+                                 [propertyName UTF8String],
+                                 attrs,
+                                 3);
     
     if (add){
         NSLog(@"添加属性成功");

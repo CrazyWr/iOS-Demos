@@ -60,7 +60,8 @@
     _test = [MyTestClass3 new];
     
     unsigned int outcount;
-    Method *methods = class_copyMethodList([_test class], &outcount);
+    Method *methods = class_copyMethodList([_test class],
+                                           &outcount);
     for (int i = 0; i < outcount; i++) {
         Method method = methods[i];
         NSLog(@"%@'s method - %@ - index: %d", [_test class], NSStringFromSelector(method_getName(method)), i);
@@ -127,7 +128,10 @@
 + (BOOL)resolveInstanceMethod:(SEL)sel{
     NSString *selectorString = NSStringFromSelector(sel);
     if ([selectorString isEqualToString:@"method3"]) {
-        class_addMethod(self.class, NSSelectorFromString(@"method3"), (IMP)functionForMethod3, "V@:");
+        class_addMethod(self.class,
+                        NSSelectorFromString(@"method3"),
+                        (IMP)functionForMethod3,
+                        "V@:");
     }
     return [super resolveInstanceMethod:sel];
 }

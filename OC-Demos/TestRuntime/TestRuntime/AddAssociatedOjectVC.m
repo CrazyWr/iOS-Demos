@@ -44,7 +44,10 @@ static NSString * const key;
     if (objc_getAssociatedObject(target, &key)) {
         return;
     }
-    objc_setAssociatedObject(target, &key, value, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(target,
+                             &key,
+                             value,
+                             OBJC_ASSOCIATION_RETAIN);
     
 }
 

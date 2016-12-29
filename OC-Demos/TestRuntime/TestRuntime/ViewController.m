@@ -35,7 +35,7 @@ static NSString *cellIdentity = @"cell";
     [self addClassStr:@"AddAssociatedOjectVC" title:@"AddAssociatedOject Demo"];
     [self addClassStr:@"AboutMethodVC" title:@"AboutMethod&消息转发(message forwarding) Demo"];
     [self addClassStr:@"MethodSwizzlingVC" title:@"MethodSwizzling Demo"];
-    
+    [self addClassStr:@"MethodSwizzlingVC2" title:@"MethodSwizzling Demo2"];
     
 }
 

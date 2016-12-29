@@ -11,6 +11,9 @@
 		791B6DA11E13A26C00F876E1 /* AboutMethodVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B6DA01E13A26C00F876E1 /* AboutMethodVC.m */; };
 		791B6DA41E13C03E00F876E1 /* MethodSwizzlingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B6DA31E13C03E00F876E1 /* MethodSwizzlingVC.m */; };
 		796E10C61E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 796E10C51E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.m */; };
+		79FD920A1E14DDA300EAA378 /* CustomClass1.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FD92091E14DDA300EAA378 /* CustomClass1.m */; };
+		79FD920D1E14E25600EAA378 /* ChildCustomClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FD920C1E14E25600EAA378 /* ChildCustomClass.m */; };
+		79FD92101E14F3F700EAA378 /* MethodSwizzlingVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FD920F1E14F3F700EAA378 /* MethodSwizzlingVC2.m */; };
 		79FF5F051E10BAC8009CC28F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF5F041E10BAC8009CC28F /* main.m */; };
 		79FF5F081E10BAC8009CC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF5F071E10BAC8009CC28F /* AppDelegate.m */; };
 		79FF5F0B1E10BAC8009CC28F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF5F0A1E10BAC8009CC28F /* ViewController.m */; };
@@ -29,6 +32,12 @@
 		791B6DA31E13C03E00F876E1 /* MethodSwizzlingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzlingVC.m; sourceTree = "<group>"; };
 		796E10C41E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProperty_Ivar_MethodDynamicVC.h; sourceTree = "<group>"; };
 		796E10C51E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProperty_Ivar_MethodDynamicVC.m; sourceTree = "<group>"; };
+		79FD92081E14DDA300EAA378 /* CustomClass1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomClass1.h; sourceTree = "<group>"; };
+		79FD92091E14DDA300EAA378 /* CustomClass1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomClass1.m; sourceTree = "<group>"; };
+		79FD920B1E14E25600EAA378 /* ChildCustomClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildCustomClass.h; sourceTree = "<group>"; };
+		79FD920C1E14E25600EAA378 /* ChildCustomClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildCustomClass.m; sourceTree = "<group>"; };
+		79FD920E1E14F3F700EAA378 /* MethodSwizzlingVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodSwizzlingVC2.h; sourceTree = "<group>"; };
+		79FD920F1E14F3F700EAA378 /* MethodSwizzlingVC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzlingVC2.m; sourceTree = "<group>"; };
 		79FF5F001E10BAC8009CC28F /* TestRuntime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestRuntime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FF5F041E10BAC8009CC28F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79FF5F061E10BAC8009CC28F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,6 +96,12 @@
 				791B6DA01E13A26C00F876E1 /* AboutMethodVC.m */,
 				791B6DA21E13C03E00F876E1 /* MethodSwizzlingVC.h */,
 				791B6DA31E13C03E00F876E1 /* MethodSwizzlingVC.m */,
+				79FD920E1E14F3F700EAA378 /* MethodSwizzlingVC2.h */,
+				79FD920F1E14F3F700EAA378 /* MethodSwizzlingVC2.m */,
+				79FD92081E14DDA300EAA378 /* CustomClass1.h */,
+				79FD92091E14DDA300EAA378 /* CustomClass1.m */,
+				79FD920B1E14E25600EAA378 /* ChildCustomClass.h */,
+				79FD920C1E14E25600EAA378 /* ChildCustomClass.m */,
 				79FF5F0C1E10BAC8009CC28F /* Main.storyboard */,
 				79FF5F0F1E10BAC8009CC28F /* Assets.xcassets */,
 				79FF5F111E10BAC8009CC28F /* LaunchScreen.storyboard */,
@@ -178,11 +193,14 @@
 			files = (
 				791B6DA11E13A26C00F876E1 /* AboutMethodVC.m in Sources */,
 				791B6DA41E13C03E00F876E1 /* MethodSwizzlingVC.m in Sources */,
+				79FD920D1E14E25600EAA378 /* ChildCustomClass.m in Sources */,
 				796E10C61E126E24002A5490 /* AddProperty_Ivar_MethodDynamicVC.m in Sources */,
 				79FF5F0B1E10BAC8009CC28F /* ViewController.m in Sources */,
 				791B6D9E1E136BFA00F876E1 /* AddAssociatedOjectVC.m in Sources */,
 				79FF5F081E10BAC8009CC28F /* AppDelegate.m in Sources */,
+				79FD92101E14F3F700EAA378 /* MethodSwizzlingVC2.m in Sources */,
 				79FF5F051E10BAC8009CC28F /* main.m in Sources */,
+				79FD920A1E14DDA300EAA378 /* CustomClass1.m in Sources */,
 				79FF5F1C1E10BFF3009CC28F /* ClassAndObjectVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
