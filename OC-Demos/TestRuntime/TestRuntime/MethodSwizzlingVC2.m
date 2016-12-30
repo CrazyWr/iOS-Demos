@@ -21,8 +21,9 @@
     
     //验证class未实现originMethod 父类实现originMethod时的方法执行
     ChildCustomClass *custom = [ChildCustomClass new];
-    [custom customMethod];
+    [custom performSelector:@selector(customMethod)];
     
+    NSLog(@"=======================Runtime Self&Super=======================");
     NSLog(@"custom class: %@", [custom class]);
     NSLog(@"custom's class: %@", [custom superclass]);
     

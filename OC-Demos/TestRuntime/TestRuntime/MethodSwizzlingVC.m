@@ -50,7 +50,7 @@
         if (didAddMethod) {
 
             /**    SEL          IMP
-             *     origin   ->  swizzle
+             *     origin   ->  origin(super)
              *     swizzle  ->  swizzle
              */
             class_replaceMethod(class,
@@ -60,7 +60,7 @@
                                 );
             /**    SEL          IMP
              *     origin   ->  swizzle
-             *     swizzle  ->  origin
+             *     swizzle  ->  swizzle
              */
         } else {
             /**    SEL          IMP

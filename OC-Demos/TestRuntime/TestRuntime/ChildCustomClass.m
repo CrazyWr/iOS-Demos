@@ -21,14 +21,41 @@
     Method swizzleMethod = class_getInstanceMethod(class, swizzleSEL);
     
     NSLog(@"===========================MethodSwizzlingVC Demo2======================");
+    
+    
     NSLog(@"originMethod IMP:%p  swizzleMethod IMP:%p", method_getImplementation(originMethod), method_getImplementation(swizzleMethod));
-    BOOL didAddMethod = class_addMethod(class, originSEL, method_getImplementation(swizzleMethod), method_getTypeEncoding(swizzleMethod));
+    
+    /**    SEL          IMP
+     *     origin   ->  origin(super)
+     *     swizzle  ->  swizzle
+     */
+    BOOL didAddMethod = class_addMethod(class,
+                                        originSEL,
+                                        method_getImplementation(swizzleMethod),
+                                        method_getTypeEncoding(swizzleMethod));
+    
     NSLog(@"originMethod IMP:%p  swizzleMethod IMP:%p didAddMethod:%d", method_getImplementation(originMethod), method_getImplementation(swizzleMethod), didAddMethod);
+    
+    
+    /**    SEL          IMP
+     *     origin   ->  origin(super)
+     *     swizzle  ->  swizzle
+     */
     if (didAddMethod) {
-        class_replaceMethod(class, swizzleSEL, method_getImplementation(originMethod), method_getTypeEncoding(originMethod));
+        class_replaceMethod(class,
+                            swizzleSEL,
+                            method_getImplementation(originMethod),
+                            method_getTypeEncoding(originMethod));
+        
+        /**    SEL          IMP
+         *     origin   ->  origin(super)
+         *     swizzle  ->  origin(super)
+         */
     }else{
-        method_exchangeImplementations(originMethod, swizzleMethod);
+        method_exchangeImplementations(originMethod,
+                                       swizzleMethod);
     }
+    
     NSLog(@"originMethod IMP:%p  swizzleMethod IMP:%p", method_getImplementation(originMethod), method_getImplementation(swizzleMethod));
     
 }
