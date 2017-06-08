@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (4.3.0)
+  - FLAnimatedImage (1.0.12)
+  - MJRefresh (3.1.12)
+  - SDWebImage (4.0.0-beta2):
+    - SDWebImage/Core (= 4.0.0-beta2)
+  - SDWebImage/Core (4.0.0-beta2)
+  - SDWebImage/GIF (4.0.0-beta2):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
+  - SnapKit (3.1.2)
+  - SVProgressHUD (2.1.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.3.0)
+  - MJRefresh (~> 3.1.12)
+  - SDWebImage (~> 4.0.0-beta2)
+  - SDWebImage/GIF (~> 4.0.0-beta2)
+  - SnapKit (~> 3.1.2)
+  - SVProgressHUD (~> 2.1.2)
+
+SPEC CHECKSUMS:
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  SDWebImage: e379f33106cf8d6766f970c0ef1c3fb609c94d78
+  SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+
+PODFILE CHECKSUM: 9299f6c013aa582e2fcfdb6f0981aa35f98b38ce
+
+COCOAPODS: 1.2.0
